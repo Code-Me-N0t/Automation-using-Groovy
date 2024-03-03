@@ -1,0 +1,5 @@
+# created by virtualenv automatically
+screenshots/
+venv
+.pytest_cache
+__pychache__
