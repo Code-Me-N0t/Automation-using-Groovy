@@ -1,4 +1,4 @@
-// TestCase.groovy
+// test.groovy
 @Grapes([
     @Grab(group='org.seleniumhq.selenium', module='selenium-java', version='3.141.59'),
     // @Grab(group='org.yaml', module='snakeyaml', version='1.29')

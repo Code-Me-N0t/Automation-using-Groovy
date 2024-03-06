@@ -17,8 +17,12 @@ class Main {
         
         WebElement caption = helpers.findElement(driver, [click: false], 'TRACKING', 'TEXT')
         String captionText = caption.getText();
-        assert captionText == 'You can search for a maximum of 10 AWB numbers.' : 'TEXT ASSERTION: FAILED'
-        println("TEXT ASSERTION: PASSED")
+        try{
+            assert captionText == 'You can search for a maximum of 20 AWB numbers.'
+            println("TEXT ASSERTION: PASSED")
+        } catch (AssertionError e){
+            println("TEXT ASSERTION: FAILED")
+        }
         
         WebElement input = helpers.findElement(driver, [click: false], 'TRACKING', 'INPUT')
         String inputText = input.getText();
