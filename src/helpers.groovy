@@ -1,4 +1,5 @@
 //helpers.groovy
+package src
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
