@@ -1,0 +1,27 @@
+NAV:
+  MAIN: "div.header-container"
+  E SERVICE: "li#menu-item-69"
+  TRACKING: "li#menu-item-2123"
+  FLIGHT: "li#menu-item-1447"
+  CACHE: "div.cky-notice-group button"
+
+TRACKING:
+  MAIN: "div.inner-container-sm"
+  TEXT: "p.sqpp-tracking-quicksearch-instruction"
+  INPUT: "input#sqpp-tracking-quicksearch-awbfield-id"
+
+FLIGHT:
+  MAIN: "div.inner-container-sm"
+  ORIGIN: "input#origin"
+  DESTINATION: "input#destination"
+  DEPARTURE BUTTON: "button.sqpp-input-icon"
+  DEPARTURE DATE: "div.react-datepicker__day--004:nth-child(2)"
+  SEARCH: "button.btn-secondary"
+
+FLIGHT RESULT:
+  MAIN: "div.FlightScheduleResultTableContainer"
+  RESULT: "tr.FlightScheduleResultInfo"
+  NEXT BUTTON: "button.FS-Pagination-Button-next > svg"
+  RESET: "span.fsResetSearchButton"
+  MESSAGE: "div.invalid-date-field"
+  INPUT MAIN: "div.inner-container-sm"
