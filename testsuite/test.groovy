@@ -21,5 +21,6 @@ driver.manage().window().maximize();
 
 // TEST CASE
 Main.trackShipment(driver)
+Main.flightSchedule(driver, "SIN", "SYD")
 
 driver.quit()

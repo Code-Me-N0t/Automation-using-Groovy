@@ -29,4 +29,15 @@ class Main {
         assert inputText == '' : 'EMPTY TEXTBOX ASSERTION: FAILED'
         println("EMPTY TEXTBOX ASSERTION: PASSED")       
     }
+
+    static void flightSchedule(WebDriver driver, String origin = null, String destination = null) {
+        println("\nFlight Schedule")
+        helpers.waitElement(driver, 30, 'NAV', 'MAIN')
+        helpers.findElement(driver, [click: true], 'NAV', 'E SERVICE')
+        helpers.findElement(driver, [click: true], 'NAV', 'FLIGHT')
+        helpers.waitElement(driver, 30, 'FLIGHT', 'MAIN')
+
+        helpers.inputValue(driver, origin, "FLIGHT", "ORIGIN")
+        helpers.inputValue(driver, destination, "FLIGHT", "DESTINATION")
+    }
 }
