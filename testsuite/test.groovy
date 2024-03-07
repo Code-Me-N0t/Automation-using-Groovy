@@ -19,8 +19,15 @@ WebDriverWait wait = new WebDriverWait(driver, 60)
 driver.get("https://www.siacargo.com")
 driver.manage().window().maximize();
 
+def data = [
+    "origin": "SIN",
+    "destination": "SYD",
+    "flightNumber": "SQ0211",
+    "date": "04 Mar Mon"
+]
+
 // TEST CASE
 Main.trackShipment(driver)
-Main.flightSchedule(driver, "SIN", "SYD")
+Main.flightSchedule(driver, data.origin, data.destination, data.flightNumber, data.date)
 
 driver.quit()
