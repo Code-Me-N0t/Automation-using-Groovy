@@ -30,10 +30,10 @@ class helpers {
         }
     }
 
-    static WebElement findElements(WebDriver driver, String... keys) {
+    static List<WebElement> findElements(WebDriver driver, String... keys) {
         def selector = locator(*keys)
-        def element = driver.findElements(By.cssSelector(selector))
-        return element
+        def elements = driver.findElements(By.cssSelector(selector))
+        return elements
     }
     
     static void waitElement(WebDriver driver, int time = 60, String... keys) {

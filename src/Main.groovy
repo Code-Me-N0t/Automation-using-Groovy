@@ -39,5 +39,14 @@ class Main {
 
         helpers.inputValue(driver, origin, "FLIGHT", "ORIGIN")
         helpers.inputValue(driver, destination, "FLIGHT", "DESTINATION")
+        helpers.findElement(driver, [click: true], "FLIGHT", "DEPARTURE BUTTON")
+        helpers.findElement(driver, [click: true], "FLIGHT", "DEPARTURE DATE")
+        helpers.findElement(driver, [click: true], "FLIGHT", "SEARCH")
+        helpers.waitElement(driver, "FLIGHT RESULT", "MAIN")
+
+        def results = helpers.findElements(driver, "FLIGHT RESULT", "RESULT")
+        results.each { result ->
+            println(result.text)
+        }
     }
 }
