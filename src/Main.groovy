@@ -5,49 +5,46 @@ import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.WebDriver
-import src.helpers
-import src.Color
+import src.Helpers
 
 class Main {
     static boolean repeat = true
 
     static void trackShipment(WebDriver driver) {
         println("Page title: ${driver.getTitle()}")
-        println("\nTracking Shipment")
-        helpers.waitElement(driver, 30, 'NAV', 'MAIN')
-        helpers.waitElement(driver, 30, 'NAV', 'CACHE')
-        helpers.findElement(driver, [click: true], 'NAV', 'CACHE')
-        helpers.findElement(driver, [click: true], 'NAV', 'E SERVICE')
-        helpers.findElement(driver, [click: true], 'NAV', 'TRACKING')
-        helpers.waitElement(driver, 30, 'TRACKING', 'MAIN')
+        println("\nTrack Shipment")
+        Helpers.waitElement(driver, 30, 'NAV', 'MAIN')
+        Helpers.waitElement(driver, 30, 'NAV', 'CACHE')
+        Helpers.findElement(driver, [click: true], 'NAV', 'CACHE')
+        Helpers.findElement(driver, [click: true], 'NAV', 'E SERVICE')
+        Helpers.findElement(driver, [click: true], 'NAV', 'TRACKING')
+        Helpers.waitElement(driver, 30, 'TRACKING', 'MAIN')
         
-        WebElement caption = helpers.findElement(driver, [click: false], 'TRACKING', 'TEXT')
-        String captionText = caption.getText();
-        helpers.assertResult("TEXT ASSERTION", 'You can search for a maximum of 10 AWB numbers.', caption.text)
+        WebElement caption = Helpers.findElement(driver, [click: false], 'TRACKING', 'TEXT')
+        Helpers.assertResult("TEXT ASSERTION", 'You can search for a maximum of 10 AWB numbers.', caption.text)
         
-        WebElement input = helpers.findElement(driver, [click: false], 'TRACKING', 'INPUT')
-        String inputText = input.getText();
-        helpers.assertResult("EMPTY TEXTBOX ASSERTION", '', input.text)
-        
+        WebElement input = Helpers.findElement(driver, [click: false], 'TRACKING', 'INPUT')
+        Helpers.assertResult("EMPTY TEXTBOX ASSERTION", '', input.text)
     }
 
     static void flightSchedule(WebDriver driver, String origin = null, String destination = null, String flightNumber = null, String date = null) {
         println("\nFlight Schedule")
-        helpers.waitElement(driver, 30, 'NAV', 'MAIN')
-        helpers.findElement(driver, [click: true], 'NAV', 'E SERVICE')
-        helpers.findElement(driver, [click: true], 'NAV', 'FLIGHT')
-        helpers.waitElement(driver, 30, 'FLIGHT', 'MAIN')
+        Helpers.waitElement(driver, 30, 'NAV', 'MAIN')
+        Helpers.findElement(driver, [click: true], 'NAV', 'E SERVICE')
+        Helpers.findElement(driver, [click: true], 'NAV', 'FLIGHT')
+        
+        Helpers.waitElement(driver, 30, 'FLIGHT', 'MAIN')
 
-        helpers.inputValue(driver, origin, "FLIGHT", "ORIGIN")
-        helpers.inputValue(driver, destination, "FLIGHT", "DESTINATION")
-        helpers.findElement(driver, [click: true], "FLIGHT", "DEPARTURE BUTTON")
-        helpers.findElement(driver, [click: true], "FLIGHT", "DEPARTURE DATE")
-        helpers.findElement(driver, [click: true], "FLIGHT", "SEARCH")
-        helpers.waitElement(driver, "FLIGHT RESULT", "MAIN")
+        Helpers.inputValue(driver, origin, "FLIGHT", "ORIGIN")
+        Helpers.inputValue(driver, destination, "FLIGHT", "DESTINATION")
+        Helpers.findElement(driver, [click: true], "FLIGHT", "DEPARTURE BUTTON")
+        Helpers.findElement(driver, [click: true], "FLIGHT", "DEPARTURE DATE")
+        Helpers.findElement(driver, [click: true], "FLIGHT", "SEARCH")
+        Helpers.waitElement(driver, "FLIGHT RESULT", "MAIN")
 
         Actions actions = new Actions(driver)
 
-        def results = helpers.findElements(driver, "FLIGHT RESULT", "RESULT")
+        def results = Helpers.findElements(driver, "FLIGHT RESULT", "RESULT")
         while (repeat == true) {
             results.eachWithIndex { result, index ->
                 actions.moveToElement(result).perform()
@@ -58,14 +55,19 @@ class Main {
                         Color.printColor("RESULT ASSERTION: ", Color.GREEN, "PASSED ${Color.GRAY}[${flightNumber} for ${date} is displayed]${Color.RESET}")
                     } catch (AssertionError e) {
                         Color.printColor("RESULT ASSERTION: ", Color.RED, "FAILED")
+                        e.printStackTrace()
                     }
                     repeat = false
                 }
                 if (index == 9) {
-                    helpers.waitClickable(driver, 10, "FLIGHT RESULT", "NEXT BUTTON")
-                    results = helpers.findElements(driver, "FLIGHT RESULT", "RESULT")
+                    Helpers.waitClickable(driver, 10, "FLIGHT RESULT", "NEXT BUTTON")
+                    results = Helpers.findElements(driver, "FLIGHT RESULT", "RESULT")
                 }
             }
         }
+    }
+
+    static void ErrorValidation(WebDriver driver, String origin = null, String destination = null){
+        
     }
 }
