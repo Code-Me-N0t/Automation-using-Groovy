@@ -1,4 +1,3 @@
-//Helpers.groovy
 package src
 import org.openqa.selenium.support.ui.ExpectedConditions as EC
 import org.openqa.selenium.support.ui.WebDriverWait
@@ -63,7 +62,7 @@ class Helpers {
     static void assertResult(String caption, String expectedResult, String actualResult) {
         try {
             assert actualResult == expectedResult
-            Color.printColor("${caption}: ", Color.GREEN, "PASSED")
+            Color.printColor("${caption}: ", Color.GREEN, "PASSED ${Color.GRAY}[${expectedResult}]")
         } catch (AssertionError e) {
             Color.printColor("${caption}: ", Color.RED, "FAILED \nExpected Result: ${expectedResult} \nActual Result: ${actualResult}")
             e.printStackTrace()
@@ -86,5 +85,8 @@ class Color {
 
     static void printColor(String caption, String color, String message) {
         println(caption + color + message + RESET)
+    }
+    static void printTitle(String title) {
+        println(CYAN + "\n${title}" + RESET)
     }
 }

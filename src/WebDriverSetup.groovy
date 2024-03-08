@@ -1,10 +1,10 @@
-// WebDriverSetup.groovy
 package src
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeDriver
 import java.util.logging.Level
 import java.util.logging.Logger
 
+// setting up the driver and website url
 class WebDriverSetup {
     static WebDriver setupWebDriver() {
         System.setProperty("webdriver.chrome.silentOutput", "true")

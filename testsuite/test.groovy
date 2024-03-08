@@ -1,4 +1,3 @@
-// test.groovy
 @Grapes([
     @Grab(group='org.seleniumhq.selenium', module='selenium-java', version='3.141.59')
 ])
@@ -18,6 +17,9 @@ def data = [
 try{ // TEST CASE
     Main.trackShipment(driver)
     Main.flightSchedule(driver, data.origin, data.destination, data.flightNumber, data.date)
+    Main.errorValidation(driver, data.origin, data.destination)
+
+
 } catch (Exception e){
     println("Exception error: ${e.message}")
     e.printStackTrace()
