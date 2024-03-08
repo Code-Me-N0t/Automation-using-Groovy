@@ -24,4 +24,3 @@ FLIGHT RESULT:
   NEXT BUTTON: "button.FS-Pagination-Button-next > svg"
   RESET: "span.fsResetSearchButton"
   MESSAGE: "div.invalid-date-field"
-  INPUT MAIN: "div.inner-container-sm"
